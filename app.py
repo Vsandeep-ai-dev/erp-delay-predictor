@@ -41,3 +41,5 @@ def download_file(filename):
 
 if __name__ == '__main__':
     app.run(debug=True)
+    print("Registered Routes:")
+    print(app.url_map)
