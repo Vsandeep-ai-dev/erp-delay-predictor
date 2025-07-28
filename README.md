@@ -7,12 +7,12 @@ A web-based Machine Learning application designed to predict delays in ERP proce
 ## 🚀 Features
 
 - Predict ERP delays using trained ML model
++ Predict ERP delays using Random Forest Machine Learning model
 - Intuitive Bootstrap UI
 - Modular structure for maintainability
 - REST API for prediction
 - Cleaned and preprocessed ERP dataset
 
----
 
 ## 🛠️ Tech Stack
 
@@ -29,17 +29,11 @@ A web-based Machine Learning application designed to predict delays in ERP proce
 ```
 erp-delay-predictor/
 │
-├── app.py               # Main Flask app
-├── cleaner.py           # Data cleaning logic
-├── predict_api.py       # Prediction endpoint
-├── train_model.py       # Model training script
-├── erp_data.csv         # Dataset
-├── requirements.txt     # Dependencies
-│
-├── data/                # (If additional data files)
-├── model/               # Trained ML model (pickle)
-├── static/              # CSS, JS, Bootstrap assets
-└── templates/           # HTML templates
+├── api.py                 # REST API using Flask
+├── train_model.py         # Script to train and save model
+├── model/                 # Folder storing trained model (.pkl)
+├── requirements.txt       # Project dependencies
+└── README.md              # Documentation
 ```
 
 ---
@@ -66,14 +60,18 @@ pip install -r requirements.txt
 1. Upload or input data via UI or API.
 2. Data is cleaned using `cleaner.py`.
 3. Prediction is made using the trained model.
-4. Output is shown in browser.
+4. Train the model (required before running API)
+python train_model.py.
+5. Output is shown in browser.
+🔍 Model
 
+The model used is a **Random Forest Classifier**, trained on a custom ERP dataset to predict delivery delays based on key features like quantity, price, rating, vendor score, shipping speed, and demand.
 ---
 
 ## ▶️ Run the App
 
 ```bash
-python app.py
+python api.py
 ```
 
 Visit [http://localhost:5000](http://localhost:5000) in your browser.
@@ -83,20 +81,28 @@ Visit [http://localhost:5000](http://localhost:5000) in your browser.
 ## 📽️ Demo Video
 
 ▶️ [Add your YouTube or Loom demo link here]
+## 🖼️ Screenshot
 
+<img src="demo/postman_response.png" width="600"/>
 ---
 
 ## 🧪 Sample Prediction API (Postman)
 
-- **Endpoint:** `/predict_api`
+- **Endpoint:** `/predict`
 - **Method:** POST
 - **Payload Example:**
 ```json
-{
-  "Column1": value1,
-  "Column2": value2,
-  ...
+
+  {
+  "quantity": 50,
+  "price": 15.0,
+  "rating": 4,
+  "vendor_score": 8,
+  "ship_speed": 2,
+  "demand": 60
 }
+  ...
+
 ```
 
 ---
@@ -109,7 +115,8 @@ Visit [http://localhost:5000](http://localhost:5000) in your browser.
 - Logistic Regression
 - API Deployment
 - UI with Bootstrap
-
+- Random Forest Classifier
+-
 ---
 
 ## 🔒 Repository Status
