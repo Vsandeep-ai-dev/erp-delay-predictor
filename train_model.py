@@ -1,22 +1,28 @@
 import pandas as pd
+import numpy as np
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
 import joblib
 import os
 
-# Load your data
-df = pd.read_csv("data/erp_data.csv")
+# Sample dummy data
+data = pd.DataFrame({
+    'quantity': [10, 20, 30, 40, 50],
+    'price': [5.0, 10.0, 15.0, 20.0, 25.0],
+    'rating': [1, 2, 3, 4, 5],
+    'vendor_score': [3, 6, 7, 8, 9],
+    'ship_speed': [1, 2, 3, 2, 1],
+    'demand': [20, 40, 60, 80, 100],
+    'delay': [0, 1, 0, 1, 0]
+})
 
-# Example: using Quantity, UnitPrice, WarehouseRating, VendorScore, ShippingSpeed, ItemDemand
-X = df[["Quantity", "UnitPrice", "WarehouseRating", "VendorScore", "ShippingSpeed", "ItemDemand"]]
-y = df["Delayed"]
+X = data.drop("delay", axis=1)
+y = data["delay"]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# Train model
+model = RandomForestClassifier()
+model.fit(X, y)
 
-clf = RandomForestClassifier()
-clf.fit(X_train, y_train)
-
+# Save model
 os.makedirs("model", exist_ok=True)
-joblib.dump(clf, "model/model.pkl")
-
-print("✅ Model trained and saved.")
+joblib.dump(model, "model/delay_predictor.pkl")
+print("✅ Model trained and saved as model/delay_predictor.pkl")
