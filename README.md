@@ -81,12 +81,17 @@ Visit [http://localhost:5000](http://localhost:5000) in your browser.
 ## 📽️ Demo Video
 
 ▶️ [Add your YouTube or Loom demo link here]
-## 🖼️ Screenshot
+ 🖼️ Screenshots
 
-<img src="demo/postman_response.png" width="600"/>
----
+ App Interface:
+![App UI](screenshots/app_screenshot.png)
 
-## 🧪 Sample Prediction API (Postman)
+ API Call via Postman:
+![API Postman Test](screenshots/postman_api_test.png)
+
+ App Running in Terminal:
+![Terminal](screenshots/terminal_run.png)
+🧪 Sample Prediction API (Postman)
 
 - **Endpoint:** `/predict`
 - **Method:** POST
