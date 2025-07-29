@@ -83,33 +83,19 @@ Visit [http://localhost:5000](http://localhost:5000) in your browser.
 ▶️ [https://www.loom.com/share/f1d02adf9a75416e882f5dfb34631bb7?sid=f64df542-f75b-4360-82f6-bd60ef159366]
 ## 🖼️ Screenshots
 
-### 🖥️ UI (Browser)
-**Homepage:**
-![UI Homepage](screenshots/ui_homepage.png)
+## 🖼️ Screenshots
 
-**Prediction Result:**
-![UI Result Table](screenshots/ui_result.png)
+### UI Homepage
+![UI Homepage](screenshots/app_ui.png)
 
----
-
-### 📬 API Call via Postman
-
-**Input JSON:**
+### Postman - Input JSON
 ![Postman Input](screenshots/postman_input.png)
 
-**Output Prediction:**
+### Postman - Output Response
 ![Postman Output](screenshots/postman_output.png)
 
----
-
-### 🖥️ Terminal Execution
-
-**Running the App:**
-![Terminal Start](screenshots/terminal_input.png)
-
-**Prediction Completed:**
+### Terminal - Server Running
 ![Terminal Output](screenshots/terminal_output.png)
-
 
 
 - **Endpoint:** `/predict`
