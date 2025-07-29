@@ -80,18 +80,37 @@ Visit [http://localhost:5000](http://localhost:5000) in your browser.
 
 ## 📽️ Demo Video
 
-▶️ [Add your YouTube or Loom demo link here]
- 🖼️ Screenshots
+▶️ [https://www.loom.com/share/f1d02adf9a75416e882f5dfb34631bb7?sid=f64df542-f75b-4360-82f6-bd60ef159366]
+## 🖼️ Screenshots
 
- App Interface:
-![App UI](screenshots/app_screenshot.png)
+### 🖥️ UI (Browser)
+**Homepage:**
+![UI Homepage](screenshots/ui_homepage.png)
 
- API Call via Postman:
-![API Postman Test](screenshots/postman_api_test.png)
+**Prediction Result:**
+![UI Result Table](screenshots/ui_result.png)
 
- App Running in Terminal:
-![Terminal](screenshots/terminal_run.png)
-🧪 Sample Prediction API (Postman)
+---
+
+### 📬 API Call via Postman
+
+**Input JSON:**
+![Postman Input](screenshots/postman_input.png)
+
+**Output Prediction:**
+![Postman Output](screenshots/postman_output.png)
+
+---
+
+### 🖥️ Terminal Execution
+
+**Running the App:**
+![Terminal Start](screenshots/terminal_input.png)
+
+**Prediction Completed:**
+![Terminal Output](screenshots/terminal_output.png)
+
+
 
 - **Endpoint:** `/predict`
 - **Method:** POST
