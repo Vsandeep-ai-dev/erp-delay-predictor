@@ -1,9 +1,14 @@
+
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 import pickle
+import os
 
-# Dummy Data (you can replace with real ERP dataset)
+# Ensure the 'model' directory exists
+os.makedirs("model", exist_ok=True)
+
+# Dummy Data (replace with real ERP data in the future)
 data = pd.DataFrame({
     'Material_Code': [1001, 1002],
     'Base_Unit_of_Measure': [1, 2],
@@ -23,18 +28,20 @@ data = pd.DataFrame({
     'Planned_Delivery_Time': [5, 10],
     'GR_Processing_Time': [2, 3],
     'Standard_Price': [950, 1900],
-    'Delay': [0, 1]  # Target
+    'Delay': [0, 1]  # Target variable
 })
 
+# Split features and target
 X = data.drop('Delay', axis=1)
 y = data['Delay']
 
-# Train model
+# Train the model
 model = RandomForestClassifier()
 model.fit(X, y)
 
-# Save the model to disk
-with open('model.pkl', 'wb') as f:
+# Save model inside "model" folder with the correct name
+with open('model/delay_predictor.pkl', 'wb') as f:
     pickle.dump(model, f)
 
-print("✅ Model trained and saved as model.pkl")
+print("✅ Model trained and saved as model/delay_predictor.pkl")
+

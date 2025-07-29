@@ -1,0 +1,4 @@
+Material_Code,Base_Unit_of_Measure,Material_Group,Production_Plant,Storage_Location,Supplier,Purchasing_Organization,Purchasing_Group,Company_Code,Document_Type,Document_Date,Release_Date,Net_Price,Currency,Quantity,Planned_Delivery_Time,GR_Processing_Time,Standard_Price,Predicted Delay
+1001,1,5,101,301,201,401,501,601,701,20200101,20200103,1000,1,10,5,2,950,0
+1002,1,6,102,302,202,402,502,602,702,20200105,20200107,1200,1,15,7,3,1100,1
+1003,1,4,103,303,203,403,503,603,703,20200109,20200112,900,1,8,3,1,850,0

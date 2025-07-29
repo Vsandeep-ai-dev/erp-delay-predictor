@@ -1,5 +1,9 @@
 import os
-if not os.path.exists('model/your_model.pkl'):
+
+model_path = os.path.join(os.getcwd(), "model.pkl")
+print(f"Looking for model at: {model_path}")
+
+if not os.path.exists(model_path):
     raise FileNotFoundError("🚫 Model file not found! Please train it first using the training script.")
 from flask import Flask, render_template, request, send_file
 import pandas as pd
@@ -8,7 +12,8 @@ import os
 from datetime import datetime
 
 app = Flask(__name__)
-model = joblib.load('model/your_model.pkl')  # adjust model path
+model = joblib.load('model.pkl')
+  # adjust model path
 
 @app.route('/')
 def index():
@@ -39,5 +44,22 @@ def predict():
 def download_file(filename):
     return send_file(filename, as_attachment=True)
 
+from flask import jsonify
+
+@app.route('/predict_api', methods=['POST'])
+def predict_api():
+    try:
+        data = request.get_json(force=True)
+        df = pd.DataFrame([data])  # Convert JSON to DataFrame
+
+        prediction = model.predict(df)
+
+        return jsonify({'prediction': int(prediction[0])})
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
