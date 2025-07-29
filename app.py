@@ -60,6 +60,10 @@ def predict_api():
         return jsonify({'error': str(e)}), 500
 if __name__ == '__main__':
     app.run(debug=True)
+ HEAD
 
 
 
+    print("Registered Routes:")
+    print(app.url_map)
+ a3764319c2e129180a4a7e5a678214f58cf83244

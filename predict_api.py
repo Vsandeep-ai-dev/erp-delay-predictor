@@ -1,11 +1,9 @@
 from flask import Flask, request, render_template
+import joblib
 import numpy as np
-import pickle
 
 app = Flask(__name__)
-
-# Load your model
-model = pickle.load(open('model.pkl', 'rb'))
+model = joblib.load("model/model.pkl")
 
 @app.route('/')
 def home():
@@ -14,15 +12,14 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # Read inputs from the form
-        features = [float(x) for x in request.form.values()]
-        final = [np.array(features)]
-        prediction = model.predict(final)
-        output = round(prediction[0], 2)
-
-        return render_template('result.html', prediction_text=f'Estimated ERP Delay: {output} days')
-    except:
-        return render_template('result.html', prediction_text="⚠️ Invalid input. Please enter numeric values.")
+        values = [float(x) for x in request.form.values()]
+        arr = np.array([values])
+        pred = model.predict(arr)[0]
+        msg = "🚨 Delayed" if pred == 1 else "✅ On Time"
+    except Exception:
+        msg = "⚠️ Invalid input. Please enter numeric values."
+    return render_template('index.html', prediction_text=msg)
 
 if __name__ == "__main__":
     app.run(debug=True)
+
